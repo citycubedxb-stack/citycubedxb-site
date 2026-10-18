@@ -13,7 +13,7 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SelfStorage","name":"CityCube Warehousing","url":"https://citycubedxb.ae/","image":"https://citycubedxb.ae/logo-full.png","legalName":"CityCube Warehousing & Storage Management & Operations LLC","telephone":"+971505662477","email":"info@citycubedxb.ae","address":{"@type":"PostalAddress","streetAddress":"S67, Ras Al Khor Industrial Area 1","addressLocality":"Dubai","addressCountry":"AE"},"description":"Warehouse storage in Dubai by the cubic metre or square foot, daily, monthly or annual."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SelfStorage","name":"CityCube Warehousing","url":"https://citycubedxb.ae/","image":"https://citycubedxb.ae/logo-full.png","legalName":"CityCube Warehousing & Storage Management & Operations LLC","telephone":"+971505662447","geo":{"@type":"GeoCoordinates","latitude":25.177605764823436,"longitude":55.34264820561161},"email":"info@citycubedxb.ae","address":{"@type":"PostalAddress","streetAddress":"S67, Ras Al Khor Industrial Area 1","addressLocality":"Dubai","addressCountry":"AE"},"description":"Warehouse storage in Dubai by the cubic metre or square foot, daily, monthly or annual."}</script>
 <style>
 :root{--ink:#0b1b38;--nv:#1b3a78;--bl:#2f8fc0;--cy:#3fb4d4;--am:#ffb400;--paper:#f4f7fb;--line:#d9e2ee;--mut:#5a6b86;--wh:#fff;
  --d:"Bricolage Grotesque","Hanken Grotesk",system-ui,sans-serif;--b:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -371,7 +371,7 @@ footer .sl{color:#a9b6c6}footer .sl:hover{color:var(--nv)}
  <div class="fc">
   <b>CityCube Warehousing &amp; Storage Management &amp; Operations LLC</b>
   <div>S67, Ras Al Khor Industrial Area 1, Dubai, UAE</div>
-  <div><a href="mailto:info@citycubedxb.ae">info@citycubedxb.ae</a><span class="sep">|</span><a href="https://wa.me/971505662477">+971 50 566 2477</a> <span data-t="mw">(Mobile &amp; WhatsApp)</span></div>
+  <div><a href="mailto:info@citycubedxb.ae">info@citycubedxb.ae</a><span class="sep">|</span><a href="https://wa.me/971505662447">+971 50 566 2447</a> <span data-t="mw">(Mobile &amp; WhatsApp)</span></div>
  </div>
  <div class="fbar"><span>© <span id="yr"></span> CityCube Warehousing</span><a class="sl" id="stf" href="#" rel="noopener nofollow" data-t="staff">Staff login</a></div>
 </div></footer>
@@ -382,13 +382,14 @@ footer .sl{color:#a9b6c6}footer .sl:hover{color:var(--nv)}
 /* ======== EDIT THESE ======== */
 var CFG={
  STAFF_URL:"https://citycubedxb-stack.github.io/citycube-firebase/",
- WHATSAPP:"971505662477",  // digits only with country code
- PHONE:"+971 50 687 2489",
+ WHATSAPP:"971505662447",  // digits only with country code
+ PHONE:"+971 50 566 2447",
  EMAIL:"info@citycubedxb.ae",
  ADDRESS:"S67, Ras Al Khor Industrial Area 1, Dubai, UAE",
  HOURS_EN:"",            // e.g. "Sat–Thu, 8:00 am – 6:00 pm" (hidden while empty)
  HOURS_AR:"",            // Arabic version of the hours
- MAP_QUERY:"",       // leave blank to hide the map until ADDRESS is set
+ LAT:25.177605764823436, LNG:55.34264820561161,   // exact map pin
+ MAP_QUERY:"",
  PHOTO_HERO:"photos/hero.jpg",   // a file in /photos or a full https:// image address
  PHOTOS:["photos/1.jpg","photos/2.jpg","photos/3.jpg","photos/4.jpg","photos/5.jpg"]  // gallery pictures, same rule; leave an entry "" to skip it
 };
@@ -445,8 +446,8 @@ function waUrl(t){return"https://wa.me/"+wa+"?text="+encodeURIComponent(t)}
 if(wa){$("lWa").href=waUrl(L("Hello CityCube, I'd like a storage quote.","مرحباً سيتي كيوب، أرغب بعرض سعر للتخزين."));$("lWa").textContent=CFG.PHONE||"+"+wa;$("fab").href=$("lWa").href;$("stW").href=$("lWa").href;$("stW").classList.remove("hide");$("fab").classList.add("on")}else $("ciWa").classList.add("hide");
 if(CFG.PHONE){$("lPh").href="tel:"+CFG.PHONE.replace(/[^\d+]/g,"");$("lPh").textContent=CFG.PHONE;$("stP").href=$("lPh").href;$("stP").classList.remove("hide")}else $("ciPh").classList.add("hide");
 if(CFG.EMAIL){$("lEm").href="mailto:"+CFG.EMAIL;$("lEm").textContent=CFG.EMAIL}else $("ciEm").classList.add("hide");
-if(CFG.ADDRESS){$("ciAd").classList.remove("hide");$("lAd").textContent=CFG.ADDRESS;$("dir").href="https://www.google.com/maps/dir/?api=1&destination="+encodeURIComponent(CFG.ADDRESS);$("dir").classList.remove("hide")}else $("ciAd").classList.add("hide");
-if(CFG.MAP_QUERY||CFG.ADDRESS)$("map").src="https://www.google.com/maps?q="+encodeURIComponent(CFG.MAP_QUERY||CFG.ADDRESS)+"&output=embed";else $("mapBox").classList.add("hide");
+if(CFG.ADDRESS){$("ciAd").classList.remove("hide");$("lAd").textContent=CFG.ADDRESS;$("dir").href="https://www.google.com/maps/dir/?api=1&destination="+encodeURIComponent(CFG.LAT?CFG.LAT+","+CFG.LNG:CFG.ADDRESS);$("dir").classList.remove("hide")}else $("ciAd").classList.add("hide");
+if(CFG.LAT)$("map").src="https://www.google.com/maps?q="+CFG.LAT+","+CFG.LNG+"&z=17&output=embed";else if(CFG.MAP_QUERY||CFG.ADDRESS)$("map").src="https://www.google.com/maps?q="+encodeURIComponent(CFG.MAP_QUERY||CFG.ADDRESS)+"&output=embed";else $("mapBox").classList.add("hide");
 
 /* ---- hero: isometric stack ---- */
 var W=20,H=10,Hh=22,SVG="http://www.w3.org/2000/svg",PER=54;
